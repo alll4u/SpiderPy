@@ -1,0 +1,14 @@
+﻿生成启动时间为 2014-1-17 11:11:33。
+     1>项目“D:\Projects\suanfa\014\014.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Debug\014.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "014.8.4桶排序.cpp"
+         014.8.4桶排序.cpp
+     1>d:\projects\suanfa\014\014.8.4桶排序.cpp(37): error C2065: “nLoop”: 未声明的标识符
+     1>d:\projects\suanfa\014\014.8.4桶排序.cpp(44): error C3861: “CountSort”: 找不到标识符
+     1>已完成生成项目“D:\Projects\suanfa\014\014.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.62
