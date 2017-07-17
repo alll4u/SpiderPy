@@ -16,12 +16,12 @@ class Printer(object):
         self.printer.setOutputFormat(QPrinter.PdfFormat)
         self.printer.setOutputFileName(name)
     def convertIt(self):
-        self.web.print_(printer)
-        print ("Pdf generated")
+        self.web.print_(self.printer)
+        print ("convert OK")
         QApplication.exit()
     def printpdf(self):
-        QObject.connect(self.web, SIGNAL("loadFinished(bool)"), convertIt)
-        sys.exit(app.exec_())
+        QObject.connect(self.web, SIGNAL("loadFinished(bool)"), self.convertIt)
+        # sys.exit(self.app.exec_())
 
 
 # app = QApplication(sys.argv)

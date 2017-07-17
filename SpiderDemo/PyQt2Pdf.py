@@ -44,8 +44,11 @@ def convertIt():
     index = index + 1
     print('index1:',index)
     web.print_(printer)
-    print ("Pdf generated")
+    print ("convert generated")
     QApplication.exit()
+
+def finished():
+    print("web load finished")
 # QObject.connect(web, SIGNAL("loadFinished(bool)"), convertIt)
 
 # def pdfprinter(url, name):
@@ -61,18 +64,18 @@ def convertIt():
 print("1111111111111")
 
 print(12)
-web.load(QUrl('https://www.baidu.com/'))
+web.load(QUrl('http://www.qaulau.com/books/PyQt4_Tutorial/events_and_signals.html'))
 print(34)
 printer.setOutputFileName('fileOK3.pdf')
 # web.print_(printer)
-b = QObject.connect(web, SIGNAL("loadFinished(bool)"), convertIt)
+b = QObject.connect(web, SIGNAL("loadFinished(bool)"), finished)
 
 
 print(12)
 web.load(QUrl('https://www.baidu.com/'))
 print(34)
 printer.setOutputFileName('fileOK4.pdf')
-b = QObject.connect(web, SIGNAL("loadFinished(bool)"), convertIt)
+b = QObject.connect(web, SIGNAL("loadFinished(bool)"), finished)
 
 # web.load(QUrl('http://blog.csdn.net/dengjianqiang2011/article/details/9260435'))
 # printer.setOutputFileName('fileOK4.pdf')

@@ -1,0 +1,61 @@
+import sys
+
+from PyQt4.QtCore import *
+from PyQt4.QtGui import * 
+from PyQt4.QtWebKit import * 
+
+class PdfPrinter(object):
+    def __init__(self, urls_in, names_in):
+        self.urls = urls_in
+        self.names = urls_in
+        self.index = 0
+
+        
+        self.ui = QWebView()
+
+        self.ui.loadStarted.connect(self.onStart)
+        self.ui.loadFinished.connect(self.onDone)
+        self.ui.load(QUrl(self.urls[self.index]))
+        # for url in urls:
+        self.ui.showMaximized()
+        self.printer = QPrinter()
+        self.printer.setPageSize(QPrinter.A4)
+        self.printer.setOutputFormat(QPrinter.PdfFormat)
+
+    def print_start(self):
+        self.ui.load(QUrl(self.urls[self.index]))
+
+    def onStart(self):
+        print("Started...")
+
+    def onDone(self, val):
+        self.index = self.index + 1
+        if self.index < len(self.urls):
+            print('load finished',val)
+
+            self.printer.setOutputFileName(names[self.index])
+            self.ui.print_(self.printer)
+
+            self.ui.load(QUrl(urls[self.index]))
+            
+
+app = QApplication(sys.argv)
+urls = ['https://stackoverflow.com/questions/14780261/receiving-multiple-loadfinished-signals-for-a-requested-web-page/28659995#28659995', 'https://lz5z.com/Python%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/',
+        'http://www.douyu.com', 'http://map.taobao.com']
+names=['1.pdf','2.pdf','3.pdf','4.pdf']
+a = PdfPrinter(urls, names)
+a.print_start()
+
+
+
+sys.exit(app.exec_())
+
+
+# def sayhello():
+#         print ("hello world")
+#         global t        #Notice: use global variable!
+#         t = threading.Timer(5.0, sayhello)
+#         t.start()
+
+# t = threading.Timer(5.0, sayhello)
+# t.start()
