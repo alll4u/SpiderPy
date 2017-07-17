@@ -54,36 +54,6 @@ def parse_question_link(link):
     obj_link = r"http://" + obj
     return obj_link
 
-
-
-
-app = QApplication(sys.argv)
-web = QWebView()
-# web.load(QUrl("https://www.quora.com/What-are-some-social-norms-one-can-intentionally-break-to-get-a-response"))
-# web.load(QUrl('https://www.baidu.com'))
-printer = QPrinter()
-printer.setPageSize(QPrinter.A4)
-printer.setOutputFormat(QPrinter.PdfFormat)
-# printer.setOutputFileName("fileOK.pdf")
-index = 0
-
-def convertIt():
-    global index
-    web.print_(printer)
-    print(index)
-    index = index + 1
-    print ("Pdf generated")
-    QApplication.exit()
-    
-# QObject.connect(web, SIGNAL("loadFinished(bool)"), convertIt)
-
-def pdfprinter(url, name):
-    web.load(QUrl(url))
-    printer.setOutputFileName(name)
-    QObject.connect(web, SIGNAL("loadFinished(bool)"), convertIt)
-
-# sys.exit(app.exec_())
-
 def main():
     url = DOWNLOAD_URL
     # while url:
@@ -101,13 +71,11 @@ def main():
             # name = question_union['name']
             # link = question_union['link']
             
-            if i<4:
-                f_str = u'{name}\n{link}\n'.format(name=question_union['name'], link=question_union['link'])
-                fp.write(f_str)
-                filename = question_union['name'] + '.pdf'
-                pdfprinter(question_union['link'], filename)
+            # if i<4:
+            f_str = u'{name}\n{link}\n'.format(name=question_union['name'], link=question_union['link'])
+            fp.write(f_str)
+            filename = question_union['name'] + '.pdf'
                 # pdfkit.from_url(question_union['link'], filename)
-    sys.exit(app.exec_())
     print("OK")
         # fp.write(u'{movies}\n\n\n'.format(movies='\n'.join(movies)))
         # fp.write(u'{links}\n\n\n'.format(links='\n'.join(links)))
