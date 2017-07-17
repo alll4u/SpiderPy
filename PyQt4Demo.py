@@ -19,8 +19,6 @@ def onDone(val):
     if index+1 < len(urls):
         index = index + 1
         ui.load(QUrl(urls[index]))
-    else:
-        return
 def onStart():
     print("Started...")
 

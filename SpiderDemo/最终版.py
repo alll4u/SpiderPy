@@ -18,9 +18,8 @@ class PdfPrinter(object):
         self.ui.load(QUrl(self.urls[self.index]))
         # for url in urls:
         self.ui.showMaximized()
-        self.printer = QPrinter()
-        self.printer.setPageSize(QPrinter.A4)
-        self.printer.setOutputFormat(QPrinter.PdfFormat)
+
+        
 
     # def print_start(self):
     #     self.ui.load(QUrl(self.urls[self.index]))
@@ -28,16 +27,16 @@ class PdfPrinter(object):
     def onStart(self):
         print("Started...")
 
-    def onDone(self, val):
-        
-        if self.index < len(self.urls):
-            print('load finished, index is ', self.index, val)
-
-            self.printer.setOutputFileName(self.names[self.index])
-            self.ui.print_(self.printer)
-
-            self.ui.load(QUrl(self.urls[self.index]))
+    def onDone(self, val): 
+        print('load finished, index is ', self.index, val)
+        printer = QPrinter()
+        printer.setPageSize(QPrinter.A4)
+        printer.setOutputFormat(QPrinter.PdfFormat)
+        printer.setOutputFileName(self.names[self.index])
+        self.ui.print_(printer)
+        if self.index+1 < len(self.urls):
             self.index = self.index + 1
+            self.ui.load(QUrl(self.urls[self.index]))
             
 app = QApplication(sys.argv)
 

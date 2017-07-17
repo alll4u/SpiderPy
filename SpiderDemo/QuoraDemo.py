@@ -102,8 +102,8 @@ def main():
             # link = question_union['link']
             
             if i<4:
-                str = u'{name}\n{link}\n'.format(name=question_union['name'], link=question_union['link'])
-                fp.write(str)
+                f_str = u'{name}\n{link}\n'.format(name=question_union['name'], link=question_union['link'])
+                fp.write(f_str)
                 filename = question_union['name'] + '.pdf'
                 pdfprinter(question_union['link'], filename)
                 # pdfkit.from_url(question_union['link'], filename)
